@@ -1,12 +1,15 @@
 import { CssBaseline } from '@mui/material';
 
 import Home from './view/pages/home';
+import { UsersContextProvider } from './view/pages/home/users-context';
 
 function App() {
   return (
     <>
-      <CssBaseline />
-      <Home />
+      <UsersContextProvider>
+        <CssBaseline />
+        <Home />
+      </UsersContextProvider>
     </>
   );
 }

@@ -26,6 +26,7 @@ export default defineConfig([
       globals: globals.browser,
     },
     rules: {
+      'react-refresh/only-export-components': 'off',
       'prettier/prettier': 'error',
       'simple-import-sort/imports': [
         'error',
