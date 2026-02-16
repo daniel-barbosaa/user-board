@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import { ConfirmDeleteModal } from '../../confirm-delete-modal';
+import { ConfirmDeleteModal } from '../confirm-delete-modal';
 
 import { useEditUserController } from './use-edit-user-controller';
 

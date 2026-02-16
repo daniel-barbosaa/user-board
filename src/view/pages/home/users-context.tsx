@@ -19,7 +19,7 @@ export const UsersContext = createContext({} as UsersContextValue);
 
 export function UsersContextProvider({ children }: { children: ReactNode }) {
   const [isNewUserModalOpen, setIsNewModalOpen] = useState(false);
-  const [isEditUserModalOpen, setIsEditModalOpen] = useState(true);
+  const [isEditUserModalOpen, setIsEditModalOpen] = useState(false);
 
   const openNewUserModal = useCallback(() => {
     setIsNewModalOpen(true);

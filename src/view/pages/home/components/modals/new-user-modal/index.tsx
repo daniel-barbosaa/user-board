@@ -12,7 +12,6 @@ import {
   Select,
   Stack,
   TextField,
-  Typography,
 } from '@mui/material';
 
 import { useNewUserController } from './use-new-user-controller';
@@ -22,8 +21,7 @@ export function ModalNewUser() {
   return (
     <Dialog open={isNewUserModalOpen}>
       <DialogTitle sx={{ position: 'relative', textAlign: 'center' }}>
-        <Typography variant="h6">Novo usuário</Typography>
-
+        Criar usuário
         <IconButton
           onClick={closeNewUserModal}
           sx={{

@@ -18,8 +18,7 @@ export function ConfirmDeleteModal({ onClose }: ConfirmDeleteModalProps) {
   return (
     <Dialog open onClose={onClose} maxWidth="lg">
       <DialogTitle sx={{ position: 'relative', textAlign: 'center' }}>
-        <Typography variant="h6">Excluir</Typography>
-
+        Excluir
         <IconButton
           onClick={onClose}
           sx={{
