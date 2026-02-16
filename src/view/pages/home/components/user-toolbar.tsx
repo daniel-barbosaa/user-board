@@ -6,7 +6,12 @@ import { useUserManagement } from '../users-context';
 
 import { ModalNewUser } from './modals/new-user-modal';
 
-export function UserToolbar() {
+interface UserToolbarProps {
+  search: string;
+  setSearch: (search: string) => void;
+}
+
+export function UserToolbar({ search, setSearch }: UserToolbarProps) {
   const { openNewUserModal } = useUserManagement();
   return (
     <>
@@ -25,6 +30,8 @@ export function UserToolbar() {
             placeholder="Buscar por nome..."
             fullWidth
             size="small"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             sx={{ flex: 1, minWidth: 250 }}
             slotProps={{
               input: {

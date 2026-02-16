@@ -10,20 +10,36 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableSortLabel,
   Typography,
 } from '@mui/material';
 
+import type { User } from '../../../../../app/types/user';
 import { useUserManagement } from '../../users-context';
 import { ModalEditUser } from '../modals/edit-user-modal';
 
 import { SkeletonUserTable } from './skeleton-user-table';
-import { useUsersController } from './use-users-controller';
 
-export function UsersTable() {
+interface UserTableProps {
+  users: User[];
+  isLoading: boolean;
+  order: 'asc' | 'desc';
+  handleSort(): void;
+  totalUsers: number;
+  search: string;
+}
+
+export function UsersTable({
+  users,
+  handleSort,
+  isLoading,
+  order,
+  totalUsers,
+  search,
+}: UserTableProps) {
   const { openEditUserModal } = useUserManagement();
-  const { users, isLoading } = useUsersController();
 
-  if (!isLoading && users.length === 0) {
+  if (!isLoading && totalUsers === 0) {
     return (
       <Box
         display="flex"
@@ -39,6 +55,7 @@ export function UsersTable() {
       </Box>
     );
   }
+
   return (
     <>
       <Paper elevation={2}>
@@ -46,7 +63,11 @@ export function UsersTable() {
           <Table>
             <TableHead>
               <TableRow sx={{ bgcolor: 'grey.100' }}>
-                <TableCell sx={{ fontWeight: 600 }}>Nome</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>
+                  <TableSortLabel active direction={order} onClick={handleSort}>
+                    Nome
+                  </TableSortLabel>
+                </TableCell>
                 <TableCell sx={{ fontWeight: 600 }}>Email</TableCell>
                 <TableCell sx={{ fontWeight: 600 }}>Status</TableCell>
               </TableRow>
@@ -54,6 +75,13 @@ export function UsersTable() {
             <TableBody>
               {isLoading ? (
                 <SkeletonUserTable />
+              ) : users.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={3} align="center" sx={{ py: 4 }}>
+                    Nenhum usuário encontrado para
+                    <strong>{` "${search}"`}</strong>
+                  </TableCell>
+                </TableRow>
               ) : (
                 users.map((user) => (
                   <TableRow

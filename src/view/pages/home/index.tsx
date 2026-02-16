@@ -3,8 +3,11 @@ import Box from '@mui/material/Box';
 
 import { UserToolbar } from './components/user-toolbar';
 import { UsersTable } from './components/users/user-table';
+import { useUsersController } from './use-users-controller';
 
 export default function Home() {
+  const { users, isLoading, order, handleSort, setSearch, search, totalUsers } =
+    useUsersController();
   return (
     <Box sx={{ bgcolor: '#f5f5f5', minHeight: '100vh', py: 4 }}>
       <Container maxWidth="lg">
@@ -12,9 +15,16 @@ export default function Home() {
           Gerenciamento de usuários
         </Typography>
 
-        <UserToolbar />
+        <UserToolbar search={search} setSearch={setSearch} />
 
-        <UsersTable />
+        <UsersTable
+          users={users}
+          isLoading={isLoading}
+          order={order}
+          handleSort={handleSort}
+          totalUsers={totalUsers}
+          search={search}
+        />
       </Container>
     </Box>
   );

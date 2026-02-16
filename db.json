@@ -1,10 +1,16 @@
 {
   "users": [
     {
-      "name": "Nubank",
+      "id": "87f0",
+      "name": "Dashgo",
       "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE",
-      "id": "fb0b"
+      "status": "ACTIVE"
+    },
+    {
+      "id": "8305",
+      "name": "Nubank",
+      "email": "danielmendess.ded3ddv@gmail.com",
+      "status": "ACTIVE"
     }
   ]
 }
