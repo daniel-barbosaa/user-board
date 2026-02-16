@@ -26,7 +26,7 @@ interface UserTableProps {
   order: 'asc' | 'desc';
   handleSort(): void;
   totalUsers: number;
-  search: string;
+  search?: string;
 }
 
 export function UsersTable({
