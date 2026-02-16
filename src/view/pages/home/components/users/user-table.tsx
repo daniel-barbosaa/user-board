@@ -1,6 +1,7 @@
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
+  Box,
   Chip,
   Paper,
   Table,
@@ -9,10 +10,11 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from '@mui/material';
 
 import { useUserManagement } from '../../users-context';
-import { ModalEditUser } from '../modals/edit-user-modal ';
+import { ModalEditUser } from '../modals/edit-user-modal';
 
 import { SkeletonUserTable } from './skeleton-user-table';
 import { useUsersController } from './use-users-controller';
@@ -20,6 +22,23 @@ import { useUsersController } from './use-users-controller';
 export function UsersTable() {
   const { openEditUserModal } = useUserManagement();
   const { users, isLoading } = useUsersController();
+
+  if (!isLoading && users.length === 0) {
+    return (
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        py={5}
+      >
+        <Typography variant="h6">Nenhum usuário cadastrado!</Typography>
+        <Typography variant="body2" color="text.secondary">
+          Cadastre o primeiro usuário para começar.
+        </Typography>
+      </Box>
+    );
+  }
   return (
     <>
       <Paper elevation={2}>

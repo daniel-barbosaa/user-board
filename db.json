@@ -1,22 +1,10 @@
 {
   "users": [
     {
-      "id": "0b08",
-      "name": "Eu sou o Douglas",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "ACTIVE"
-    },
-    {
-      "id": "82c9",
-      "name": "Dashgo",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE"
-    },
-    {
-      "name": "Jurubeba",
+      "name": "Nubank",
       "email": "danielmendess.dev@gmail.com",
       "status": "INACTIVE",
-      "id": "8f81"
+      "id": "fb0b"
     }
   ]
 }
