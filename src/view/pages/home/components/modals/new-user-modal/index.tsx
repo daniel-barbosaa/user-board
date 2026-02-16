@@ -13,11 +13,18 @@ import {
   Stack,
   TextField,
 } from '@mui/material';
+import { Controller } from 'react-hook-form';
 
 import { useNewUserController } from './use-new-user-controller';
 
 export function ModalNewUser() {
-  const { closeNewUserModal, isNewUserModalOpen } = useNewUserController();
+  const {
+    closeNewUserModal,
+    isNewUserModalOpen,
+    formMethods,
+    handleSubmit,
+    isPending,
+  } = useNewUserController();
   return (
     <Dialog open={isNewUserModalOpen}>
       <DialogTitle sx={{ position: 'relative', textAlign: 'center' }}>
@@ -40,16 +47,19 @@ export function ModalNewUser() {
           spacing={2}
           sx={{
             width: '100%',
-            height: '100%',
             minWidth: 400,
             marginTop: '8px',
           }}
+          onSubmit={formMethods.handleSubmit(handleSubmit)}
         >
           <TextField
             label="Nome"
             variant="outlined"
             fullWidth
             placeholder="Digite o nome completo"
+            {...formMethods.register('name')}
+            error={!!formMethods.formState.errors.name}
+            helperText={formMethods.formState.errors.name?.message}
           />
 
           <TextField
@@ -58,26 +68,36 @@ export function ModalNewUser() {
             fullWidth
             type="email"
             placeholder="Digite o email"
+            {...formMethods.register('email')}
+            error={!!formMethods.formState.errors.email}
+            helperText={formMethods.formState.errors.email?.message}
           />
 
-          <FormControl fullWidth>
-            <InputLabel>Status</InputLabel>
-            <Select label="Status" defaultValue="Ativo">
-              <MenuItem value="Ativo">Ativo</MenuItem>
-              <MenuItem value="Inativo">Inativo</MenuItem>
-            </Select>
-          </FormControl>
+          <Controller
+            name="status"
+            control={formMethods.control}
+            defaultValue="ACTIVE"
+            render={({ field }) => (
+              <FormControl
+                fullWidth
+                error={!!formMethods.formState.errors.status}
+              >
+                <InputLabel>Status</InputLabel>
+                <Select {...field} label="Status">
+                  <MenuItem value="ACTIVE">Ativo</MenuItem>
+                  <MenuItem value="INACTIVE">Inativo</MenuItem>
+                </Select>
+              </FormControl>
+            )}
+          />
+
+          <DialogActions sx={{ marginTop: '8px' }}>
+            <Button onClick={closeNewUserModal}>Cancelar</Button>
+            <Button type="submit" variant="contained" loading={isPending}>
+              Criar
+            </Button>
+          </DialogActions>
         </Stack>
-        <DialogActions
-          sx={{
-            marginTop: '8px',
-          }}
-        >
-          <Button onClick={closeNewUserModal}>Cancelar</Button>
-          <Button type="submit" form="subscription-form" variant="contained">
-            Criar
-          </Button>
-        </DialogActions>
       </DialogContent>
     </Dialog>
   );

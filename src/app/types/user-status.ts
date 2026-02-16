@@ -3,4 +3,6 @@ export const USER_STATUS = {
   INACTIVE: 'Inativo',
 };
 
-export type UserStatus = keyof typeof USER_STATUS;
+export type UserStatusType = keyof typeof USER_STATUS;
+
+export const STATUS_ENUM = Object.keys(USER_STATUS) as [UserStatusType];

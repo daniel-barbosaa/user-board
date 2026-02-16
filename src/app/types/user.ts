@@ -1,8 +1,8 @@
-import type { UserStatus } from './user-status';
+import type { UserStatusType } from './user-status';
 
 export type User = {
-  id: string;
+  id: number;
   name: string;
   email: string;
-  status: UserStatus;
+  status: UserStatusType;
 };

@@ -1,3 +1,5 @@
+import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
   Chip,
   Paper,
@@ -46,12 +48,21 @@ export function UsersTable() {
                     <TableCell>{usuario.email}</TableCell>
                     <TableCell>
                       <Chip
-                        label={usuario.status}
+                        icon={
+                          usuario.status === 'ACTIVE' ? (
+                            <CheckCircleIcon fontSize="small" />
+                          ) : (
+                            <CancelIcon fontSize="small" />
+                          )
+                        }
+                        label={
+                          usuario.status === 'ACTIVE' ? 'Ativo' : 'Inativo'
+                        }
                         color={
-                          usuario.status === 'ACTIVE' ? 'success' : 'default'
+                          usuario.status === 'ACTIVE' ? 'success' : 'error'
                         }
                         size="small"
-                        sx={{ fontWeight: 500 }}
+                        sx={{ fontWeight: 600 }}
                       />
                     </TableCell>
                   </TableRow>
