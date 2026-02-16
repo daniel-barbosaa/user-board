@@ -46,6 +46,11 @@ export function useEditUserController() {
       return userService.update(data);
     },
   });
+  const { isPending: isPendingDelete, mutateAsync: deleteUser } = useMutation({
+    mutationFn: async (userId: string) => {
+      return userService.remove(userId);
+    },
+  });
   const queryClient = useQueryClient();
 
   async function handleSubmit(data: EditUserFormSchema) {
@@ -73,6 +78,20 @@ export function useEditUserController() {
     setIsDeleteModalOpen(false);
   }
 
+  async function handleDeleteUser() {
+    try {
+      await deleteUser(userBeingEdit!.id);
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_CACHE_KEYS.users],
+      });
+      toast.success('Usuário deletado com sucesso!');
+      closeEditUserModal();
+      handleCloseDeleteModal();
+    } catch {
+      toast.error('Erro ao deletar usuário!');
+    }
+  }
+
   return {
     isEditUserModalOpen,
     closeEditUserModal,
@@ -83,5 +102,7 @@ export function useEditUserController() {
     formMethods,
     isPending,
     handleSubmit,
+    handleDeleteUser,
+    isPendingDelete,
   };
 }

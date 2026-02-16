@@ -12,9 +12,15 @@ import {
 
 interface ConfirmDeleteModalProps {
   onClose?(): void;
+  isLoading: boolean;
+  onConfirm(): void;
 }
 
-export function ConfirmDeleteModal({ onClose }: ConfirmDeleteModalProps) {
+export function ConfirmDeleteModal({
+  onClose,
+  isLoading,
+  onConfirm,
+}: ConfirmDeleteModalProps) {
   return (
     <Dialog open onClose={onClose} maxWidth="lg">
       <DialogTitle sx={{ position: 'relative', textAlign: 'center' }}>
@@ -53,7 +59,12 @@ export function ConfirmDeleteModal({ onClose }: ConfirmDeleteModalProps) {
           excluir este usuário?
         </Typography>
         <Stack spacing={2}>
-          <Button variant="contained" color="error">
+          <Button
+            variant="contained"
+            color="error"
+            loading={isLoading}
+            onClick={onConfirm}
+          >
             Sim, desejo excluir
           </Button>
           <Button variant="outlined" onClick={onClose}>

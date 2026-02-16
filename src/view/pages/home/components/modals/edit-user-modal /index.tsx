@@ -31,10 +31,18 @@ export function ModalEditUser() {
     formMethods,
     handleSubmit,
     isPending,
+    handleDeleteUser,
+    isPendingDelete,
   } = useEditUserController();
 
   if (isDeleteModalOpen) {
-    return <ConfirmDeleteModal onClose={handleCloseDeleteModal} />;
+    return (
+      <ConfirmDeleteModal
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleDeleteUser}
+        isLoading={isPendingDelete}
+      />
+    );
   }
 
   return (

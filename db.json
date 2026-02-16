@@ -1,66 +1,6 @@
 {
   "users": [
     {
-      "name": "editado",
-      "email": "ss.silva@example.com",
-      "status": "INACTIVE",
-      "id": "42a2"
-    },
-    {
-      "name": "Maria Santos",
-      "email": "maria.santos@example.com",
-      "status": "INACTIVE",
-      "id": "15fa"
-    },
-    {
-      "id": "ac8d",
-      "name": "Mendes",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE"
-    },
-    {
-      "id": "b142",
-      "name": "Messi",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE"
-    },
-    {
-      "id": "daf0",
-      "name": "Nubank",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE"
-    },
-    {
-      "id": "a6ba",
-      "name": "Meliante",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "ACTIVE"
-    },
-    {
-      "id": "9819",
-      "name": "Dashgo",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE"
-    },
-    {
-      "id": "8a9c",
-      "name": "Dashgo",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "ACTIVE"
-    },
-    {
-      "id": "d0f8",
-      "name": "Dashgo",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE"
-    },
-    {
-      "name": "Lanche",
-      "email": "danielmendess.dev@gmail.com",
-      "status": "ACTIVE",
-      "id": "c9e9"
-    },
-    {
       "id": "0b08",
       "name": "Eu sou o Douglas",
       "email": "danielmendess.dev@gmail.com",
