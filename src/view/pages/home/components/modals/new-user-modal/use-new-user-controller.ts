@@ -1,6 +1,6 @@
 import { useUsers } from '../../../users-context';
 
-export function useNewUser() {
+export function useNewUserController() {
   const { closeNewUserModal, openNewUserModal, isNewUserModalOpen } =
     useUsers();
 

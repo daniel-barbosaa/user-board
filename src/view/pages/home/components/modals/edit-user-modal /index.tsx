@@ -1,5 +1,6 @@
-import { Close } from '@mui/icons-material';
+import { Close, Delete } from '@mui/icons-material';
 import {
+  Box,
   Button,
   Dialog,
   DialogActions,
@@ -15,27 +16,48 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useNewUserController } from './use-new-user-controller';
+import { ConfirmDeleteModal } from '../../confirm-delete-modal';
 
-export function ModalNewUser() {
-  const { closeNewUserModal, isNewUserModalOpen } = useNewUserController();
+import { useEditUserController } from './use-edit-user-controller';
+
+export function ModalEditUser() {
+  const {
+    closeEditUserModal,
+    isEditUserModalOpen,
+    handleCloseDeleteModal,
+    handleOpenDeleteModal,
+    isDeleteModalOpen,
+  } = useEditUserController();
+
+  if (isDeleteModalOpen) {
+    return <ConfirmDeleteModal onClose={handleCloseDeleteModal} />;
+  }
+
   return (
-    <Dialog open={isNewUserModalOpen}>
-      <DialogTitle sx={{ position: 'relative', textAlign: 'center' }}>
-        <Typography variant="h6">Novo usuário</Typography>
-
-        <IconButton
-          onClick={closeNewUserModal}
+    <Dialog open={isEditUserModalOpen} onClose={closeEditUserModal}>
+      <DialogTitle>
+        <Box
           sx={{
-            position: 'absolute',
-            left: 8,
-            top: '50%',
-            transform: 'translateY(-50%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
-          <Close />
-        </IconButton>
+          <IconButton onClick={closeEditUserModal} sx={{ right: 8 }}>
+            <Close />
+          </IconButton>
+          <Typography variant="h6">Editar usuário</Typography>
+
+          <IconButton
+            color="error"
+            aria-label="Excluir usuário"
+            onClick={handleOpenDeleteModal}
+          >
+            <Delete />
+          </IconButton>
+        </Box>
       </DialogTitle>
+
       <DialogContent>
         <Stack
           component="form"
@@ -70,14 +92,11 @@ export function ModalNewUser() {
             </Select>
           </FormControl>
         </Stack>
-        <DialogActions
-          sx={{
-            marginTop: '8px',
-          }}
-        >
-          <Button onClick={closeNewUserModal}>Cancelar</Button>
+
+        <DialogActions sx={{ marginTop: '8px' }}>
+          <Button onClick={closeEditUserModal}>Cancelar</Button>
           <Button type="submit" form="subscription-form" variant="contained">
-            Criar
+            Salvar
           </Button>
         </DialogActions>
       </DialogContent>

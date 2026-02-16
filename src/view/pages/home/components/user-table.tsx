@@ -1,8 +1,5 @@
-import { Delete, Edit } from '@mui/icons-material';
 import {
-  Box,
   Chip,
-  IconButton,
   Paper,
   Table,
   TableBody,
@@ -11,6 +8,10 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+
+import { useUsers } from '../users-context';
+
+import { ModalEditUser } from './modals/edit-user-modal ';
 
 const usuarios = [
   {
@@ -41,57 +42,43 @@ const usuarios = [
 ];
 
 export function UsersTable() {
+  const { openEditUserModal } = useUsers();
   return (
-    <Paper elevation={2}>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow sx={{ bgcolor: 'grey.100' }}>
-              <TableCell sx={{ fontWeight: 600 }}>Nome</TableCell>
-              <TableCell sx={{ fontWeight: 600 }}>Email</TableCell>
-              <TableCell sx={{ fontWeight: 600 }}>Status</TableCell>
-              <TableCell sx={{ fontWeight: 600 }} align="center">
-                Ações
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {usuarios.map((usuario) => (
-              <TableRow
-                key={usuario.id}
-                sx={{ '&:hover': { bgcolor: 'grey.50' } }}
-              >
-                <TableCell>{usuario.nome}</TableCell>
-                <TableCell>{usuario.email}</TableCell>
-                <TableCell>
-                  <Chip
-                    label={usuario.status}
-                    color={usuario.status === 'Ativo' ? 'success' : 'default'}
-                    size="small"
-                    sx={{ fontWeight: 500 }}
-                  />
-                </TableCell>
-                <TableCell align="center">
-                  <Box
-                    sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}
-                  >
-                    <IconButton
-                      color="primary"
-                      size="small"
-                      aria-label="editar"
-                    >
-                      <Edit fontSize="small" />
-                    </IconButton>
-                    <IconButton color="error" size="small" aria-label="excluir">
-                      <Delete fontSize="small" />
-                    </IconButton>
-                  </Box>
-                </TableCell>
+    <>
+      <Paper elevation={2}>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow sx={{ bgcolor: 'grey.100' }}>
+                <TableCell sx={{ fontWeight: 600 }}>Nome</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Email</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Status</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
+            </TableHead>
+            <TableBody>
+              {usuarios.map((usuario) => (
+                <TableRow
+                  key={usuario.id}
+                  sx={{ '&:hover': { bgcolor: 'grey.50', cursor: 'pointer' } }}
+                  onClick={openEditUserModal}
+                >
+                  <TableCell>{usuario.nome}</TableCell>
+                  <TableCell>{usuario.email}</TableCell>
+                  <TableCell>
+                    <Chip
+                      label={usuario.status}
+                      color={usuario.status === 'Ativo' ? 'success' : 'default'}
+                      size="small"
+                      sx={{ fontWeight: 500 }}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
+      <ModalEditUser />
+    </>
   );
 }
