@@ -1,8 +1,8 @@
 import { Container, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import { UsersTable } from './components/user-table';
 import { UserToolbar } from './components/user-toolbar';
+import { UsersTable } from './components/users/user-table';
 
 export default function Home() {
   return (

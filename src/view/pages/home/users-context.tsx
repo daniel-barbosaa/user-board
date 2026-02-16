@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 
-interface UsersContextValue {
+interface UserManagementContextValue {
   isNewUserModalOpen: boolean;
   openNewUserModal(): void;
   closeNewUserModal(): void;
@@ -15,9 +15,15 @@ interface UsersContextValue {
   closeEditUserModal(): void;
 }
 
-export const UsersContext = createContext({} as UsersContextValue);
+export const UserManagementContext = createContext(
+  {} as UserManagementContextValue,
+);
 
-export function UsersContextProvider({ children }: { children: ReactNode }) {
+export function UserManagementContextProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [isNewUserModalOpen, setIsNewModalOpen] = useState(false);
   const [isEditUserModalOpen, setIsEditModalOpen] = useState(false);
 
@@ -38,7 +44,7 @@ export function UsersContextProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <UsersContext.Provider
+    <UserManagementContext.Provider
       value={{
         isNewUserModalOpen,
         openNewUserModal,
@@ -49,10 +55,10 @@ export function UsersContextProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </UsersContext.Provider>
+    </UserManagementContext.Provider>
   );
 }
 
-export function useUsers() {
-  return useContext(UsersContext);
+export function useUserManagement() {
+  return useContext(UserManagementContext);
 }

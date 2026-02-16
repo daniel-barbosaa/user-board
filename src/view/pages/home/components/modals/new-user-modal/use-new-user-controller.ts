@@ -1,8 +1,8 @@
-import { useUsers } from '../../../users-context';
+import { useUserManagement } from '../../../users-context';
 
 export function useNewUserController() {
   const { closeNewUserModal, openNewUserModal, isNewUserModalOpen } =
-    useUsers();
+    useUserManagement();
 
   return { closeNewUserModal, openNewUserModal, isNewUserModalOpen };
 }

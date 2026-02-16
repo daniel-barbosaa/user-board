@@ -2,12 +2,12 @@ import { Search } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import { Box, Button, InputAdornment, Paper, TextField } from '@mui/material';
 
-import { useUsers } from '../users-context';
+import { useUserManagement } from '../users-context';
 
 import { ModalNewUser } from './modals/new-user-modal';
 
 export function UserToolbar() {
-  const { openNewUserModal } = useUsers();
+  const { openNewUserModal } = useUserManagement();
   return (
     <>
       <Paper elevation={2} sx={{ p: 3, mb: 3 }}>

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { useUsers } from '../../../users-context';
+import { useUserManagement } from '../../../users-context';
 
 export function useEditUserController() {
   const { isEditUserModalOpen, closeEditUserModal, openEditUserModal } =
-    useUsers();
+    useUserManagement();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   function handleOpenDeleteModal() {
