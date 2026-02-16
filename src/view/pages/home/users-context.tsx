@@ -6,13 +6,16 @@ import {
   useState,
 } from 'react';
 
+import type { User } from '../../../app/types/user';
+
 interface UserManagementContextValue {
   isNewUserModalOpen: boolean;
   openNewUserModal(): void;
   closeNewUserModal(): void;
   isEditUserModalOpen: boolean;
-  openEditUserModal(): void;
+  openEditUserModal(user: User): void;
   closeEditUserModal(): void;
+  userBeingEdit: null | User;
 }
 
 export const UserManagementContext = createContext(
@@ -26,6 +29,7 @@ export function UserManagementContextProvider({
 }) {
   const [isNewUserModalOpen, setIsNewModalOpen] = useState(false);
   const [isEditUserModalOpen, setIsEditModalOpen] = useState(false);
+  const [userBeingEdit, setUserBeingEdit] = useState<null | User>(null);
 
   const openNewUserModal = useCallback(() => {
     setIsNewModalOpen(true);
@@ -35,8 +39,9 @@ export function UserManagementContextProvider({
     setIsNewModalOpen(false);
   }, []);
 
-  const openEditUserModal = useCallback(() => {
+  const openEditUserModal = useCallback((user: User) => {
     setIsEditModalOpen(true);
+    setUserBeingEdit(user);
   }, []);
 
   const closeEditUserModal = useCallback(() => {
@@ -52,6 +57,7 @@ export function UserManagementContextProvider({
         openEditUserModal,
         isEditUserModalOpen,
         closeEditUserModal,
+        userBeingEdit,
       }}
     >
       {children}

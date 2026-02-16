@@ -36,31 +36,27 @@ export function UsersTable() {
               {isLoading ? (
                 <SkeletonUserTable />
               ) : (
-                users.map((usuario) => (
+                users.map((user) => (
                   <TableRow
-                    key={usuario.id}
+                    key={user.id}
                     sx={{
                       '&:hover': { bgcolor: 'grey.50', cursor: 'pointer' },
                     }}
-                    onClick={openEditUserModal}
+                    onClick={() => openEditUserModal(user)}
                   >
-                    <TableCell>{usuario.name}</TableCell>
-                    <TableCell>{usuario.email}</TableCell>
+                    <TableCell>{user.name}</TableCell>
+                    <TableCell>{user.email}</TableCell>
                     <TableCell>
                       <Chip
                         icon={
-                          usuario.status === 'ACTIVE' ? (
+                          user.status === 'ACTIVE' ? (
                             <CheckCircleIcon fontSize="small" />
                           ) : (
                             <CancelIcon fontSize="small" />
                           )
                         }
-                        label={
-                          usuario.status === 'ACTIVE' ? 'Ativo' : 'Inativo'
-                        }
-                        color={
-                          usuario.status === 'ACTIVE' ? 'success' : 'error'
-                        }
+                        label={user.status === 'ACTIVE' ? 'Ativo' : 'Inativo'}
+                        color={user.status === 'ACTIVE' ? 'success' : 'error'}
                         size="small"
                         sx={{ fontWeight: 600 }}
                       />

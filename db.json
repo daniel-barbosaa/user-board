@@ -1,15 +1,15 @@
 {
   "users": [
     {
-      "name": "João Silva",
-      "email": "joao.silva@example.com",
-      "status": "Ativo",
+      "name": "editado",
+      "email": "ss.silva@example.com",
+      "status": "INACTIVE",
       "id": "42a2"
     },
     {
       "name": "Maria Santos",
       "email": "maria.santos@example.com",
-      "status": "Inativo",
+      "status": "INACTIVE",
       "id": "15fa"
     },
     {
@@ -55,10 +55,10 @@
       "status": "INACTIVE"
     },
     {
-      "id": "c9e9",
       "name": "Lanche",
       "email": "danielmendess.dev@gmail.com",
-      "status": "INACTIVE"
+      "status": "ACTIVE",
+      "id": "c9e9"
     },
     {
       "id": "0b08",
@@ -71,6 +71,12 @@
       "name": "Dashgo",
       "email": "danielmendess.dev@gmail.com",
       "status": "INACTIVE"
+    },
+    {
+      "name": "Jurubeba",
+      "email": "danielmendess.dev@gmail.com",
+      "status": "INACTIVE",
+      "id": "8f81"
     }
   ]
 }
