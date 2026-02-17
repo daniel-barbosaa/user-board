@@ -114,3 +114,7 @@ src/
    └─ pages/       # Páginas da aplicação
 
 ```
+<img width="800" alt="deletar-usuario-darkmode" src="https://github.com/user-attachments/assets/3f1b1a96-8f3a-4ef4-b984-b4a2e22fe77d" />
+<img width="800" alt="pesquisa" src="https://github.com/user-attachments/assets/a6991e2d-c039-4691-a489-53a0a29fe9d0" />
+<img width="800" alt="mostra-toast" src="https://github.com/user-attachments/assets/7052cc31-e51f-4a48-b509-4903b834b0fa" />
+<img width="800" alt="editar-usuario" src="https://github.com/user-attachments/assets/02cfdaf3-5d25-464d-8391-d70b1ba7957d" />
