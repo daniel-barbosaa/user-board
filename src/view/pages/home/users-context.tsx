@@ -66,5 +66,10 @@ export function UserManagementContextProvider({
 }
 
 export function useUserManagement() {
-  return useContext(UserManagementContext);
+  const context = useContext(UserManagementContext);
+  if (!context)
+    throw new Error(
+      'useUserManagement must be used within UserManagementContextProvider',
+    );
+  return context;
 }

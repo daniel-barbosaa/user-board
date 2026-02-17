@@ -49,7 +49,7 @@ export function UsersTable({
         py={5}
       >
         <Typography variant="h6">Nenhum usuário cadastrado!</Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2">
           Cadastre o primeiro usuário para começar.
         </Typography>
       </Box>
@@ -62,7 +62,7 @@ export function UsersTable({
         <TableContainer>
           <Table>
             <TableHead>
-              <TableRow sx={{ bgcolor: 'grey.100' }}>
+              <TableRow>
                 <TableCell sx={{ fontWeight: 600 }}>
                   <TableSortLabel active direction={order} onClick={handleSort}>
                     Nome
@@ -87,7 +87,10 @@ export function UsersTable({
                   <TableRow
                     key={user.id}
                     sx={{
-                      '&:hover': { bgcolor: 'grey.50', cursor: 'pointer' },
+                      '&:hover': {
+                        cursor: 'pointer',
+                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      },
                     }}
                     onClick={() => openEditUserModal(user)}
                   >
