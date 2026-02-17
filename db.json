@@ -3,14 +3,8 @@
     {
       "name": "Messi",
       "email": "messi10@gmail.com",
-      "status": "INACTIVE",
+      "status": "ACTIVE",
       "id": "06a0"
-    },
-    {
-      "id": "644b",
-      "name": "  daniel mendes",
-      "email": "messi10@gmail.com",
-      "status": "ACTIVE"
     }
   ]
 }

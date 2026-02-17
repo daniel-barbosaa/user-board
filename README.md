@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# UserBoard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Material UI](https://img.shields.io/badge/Material_UI-007FFF?logo=material-ui)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=white)
+![Husky](https://img.shields.io/badge/Husky-0F4B6F?logo=husky&logoColor=white)
 
-Currently, two official plugins are available:
+_Este projeto é um aplicativo de gerenciamento de usuários, desenvolvido como teste técnico._
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Sobre o projeto
 
-## React Compiler
+O **UserBoard** é um aplicativo de gerenciamento de usuários.
+A aplicação permite adicionar, editar, listar e filtrar usuários, com ordenação e pesquisa por nome e indicação de status ativo / inativo.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Cadastro e edição de usuários
+- Listagem de usuário
+- Ordenação e filtro por nome
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Como rodar o projeto
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Pré-requisitos
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js 20+
+- Yarn ou npm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+### Passos
+
+```bash
+# Clone o repositório
+git clone https://github.com/daniel-barbosaa/user-board.git
+
+# Acesse a pasta
+cd user-board
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Variáveis de ambiente
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+Este projeto consome uma API local simulada usando `JSON-SERVER`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+Renomeie o arquivo `.env.example` na raiz do projeto e coloque a seguinte variável:
+
+```env
+VITE_API_URL=http://localhost:3001
 ```
+
+### Executando a aplicação
+
+```bash
+# Instale as dependências
+yarn install
+
+# Inicie a aplicação
+yarn start:dev
+```
+
+## Testes
+
+Executando os testes:
+
+```bash
+# Executar testes
+yarn test
+```
+
+## Cobertura dos testes
+
+### Modais (unitários)
+
+#### ModalEditUser
+
+- Verifica se o modal abre quando `isEditUserModalOpen` é `true`.
+- Submissão do formulário ao clicar em "Salvar".
+
+#### ModalNewUser
+
+- Verifica se o modal abre com os campos de nome e email.
+- Submissão do formulário ao clicar em "Criar".
+
+### UsersTable
+
+#### Unitário
+
+- Renderiza corretamente o estado vazio quando não há usuários.
+
+#### Integração
+
+- Renderiza lista de usuários corretamente.
+- Verifica se ao clicar em uma linha, `openEditUserModal` é chamado com o usuário correto.
+
+## Estrutura de pastas
+
+A estrutura do projeto foi pensada para separar claramente
+a lógica de negócio da camada de apresentação, facilitando
+a manutenção, escalabilidade e reutilização de código.

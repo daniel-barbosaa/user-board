@@ -1,9 +1,10 @@
 import axios from 'axios';
 
+import { ENV } from '../utils/env';
 import { wait } from '../utils/wait';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: ENV.API_URL,
 });
 
 // just to test latency

@@ -6,6 +6,11 @@ import type { User } from '../../../../../app/types/user';
 import { useUserManagement } from '../../users-context';
 
 import { UsersTable } from './user-table';
+jest.mock('../../../../../app/utils/env', () => ({
+  ENV: {
+    API_URL: '',
+  },
+}));
 
 jest.mock('../../users-context', () => ({
   useUserManagement: jest.fn(),

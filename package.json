@@ -12,7 +12,8 @@
     "lint:prettier:fix": "prettier --write .",
     "lint:eslint:check": "eslint .",
     "db:init": "json-server --watch db.json --port 3001",
-    "test": "jest"
+    "test": "jest",
+    "start:dev": "yarn db:init & yarn dev"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
