@@ -1,7 +1,6 @@
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
-  Box,
   Chip,
   Paper,
   Table,
@@ -11,10 +10,10 @@ import {
   TableHead,
   TableRow,
   TableSortLabel,
-  Typography,
 } from '@mui/material';
 
 import type { User } from '../../../../../app/types/user';
+import { EmptyState } from '../../../../components/empty-state';
 import { useUserManagement } from '../../users-context';
 import { ModalEditUser } from '../modals/edit-user-modal';
 
@@ -40,20 +39,7 @@ export function UsersTable({
   const { openEditUserModal } = useUserManagement();
 
   if (!isLoading && totalUsers === 0) {
-    return (
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        py={5}
-      >
-        <Typography variant="h6">Nenhum usuário cadastrado!</Typography>
-        <Typography variant="body2">
-          Cadastre o primeiro usuário para começar.
-        </Typography>
-      </Box>
-    );
+    return <EmptyState />;
   }
 
   return (

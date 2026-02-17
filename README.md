@@ -111,6 +111,6 @@ src/
 ├─ assets/         # Imagens, ícones e arquivos estáticos
 └─ view/
    ├─ components/  # Componentes reutilizáveis da UI
-   └─ pages/       # Página da aplicação
+   └─ pages/       # Páginas da aplicação
 
 ```

@@ -29,8 +29,11 @@ export default function Home() {
           </span>
         </Typography>
 
-        <UserToolbar search={search} setSearch={setSearch} />
-
+        <UserToolbar
+          totalUsers={totalUsers}
+          search={search}
+          setSearch={setSearch}
+        />
         <UsersTable
           users={users}
           isLoading={isLoading}
