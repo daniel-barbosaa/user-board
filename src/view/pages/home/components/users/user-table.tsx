@@ -64,7 +64,16 @@ export function UsersTable({
             <TableHead>
               <TableRow>
                 <TableCell sx={{ fontWeight: 600 }}>
-                  <TableSortLabel active direction={order} onClick={handleSort}>
+                  <TableSortLabel
+                    active
+                    direction={order}
+                    onClick={handleSort}
+                    sx={{
+                      '&:focus-visible': {
+                        outline: '2px solid blue',
+                      },
+                    }}
+                  >
                     Nome
                   </TableSortLabel>
                 </TableCell>
@@ -89,10 +98,19 @@ export function UsersTable({
                     sx={{
                       '&:hover': {
                         cursor: 'pointer',
-                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                        bgcolor: 'rgba(25, 118, 210, 0.08)',
+                      },
+                      '&:focus': {
+                        bgcolor: 'rgba(25, 118, 210, 0.08)',
                       },
                     }}
                     onClick={() => openEditUserModal(user)}
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        openEditUserModal(user);
+                      }
+                    }}
                   >
                     <TableCell>{user.name}</TableCell>
                     <TableCell>{user.email}</TableCell>
