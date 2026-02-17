@@ -4,16 +4,19 @@ import { useForm } from 'react-hook-form';
 
 import { ModalNewUser } from './index';
 
+const handleSubmitMock = jest.fn();
+
 jest.mock('./use-new-user-controller', () => ({
   useNewUserController: () => {
     const methods = useForm({
       defaultValues: { name: '', email: '', status: 'ACTIVE' },
     });
+
     return {
       closeNewUserModal: jest.fn(),
       isNewUserModalOpen: true,
       formMethods: methods,
-      handleSubmit: jest.fn(),
+      handleSubmit: handleSubmitMock,
       isPending: false,
     };
   },
@@ -35,8 +38,10 @@ describe('ModalNewUser', () => {
     const user = userEvent.setup();
 
     const submitButton = screen.getByRole('button', { name: /^criar$/i });
+    await user.type(screen.getByLabelText(/nome/i), 'Daniel');
+    await user.type(screen.getByLabelText(/email/i), 'daniel@email.com');
     await user.click(submitButton);
 
-    expect(submitButton).toBeInTheDocument();
+    expect(handleSubmitMock).toHaveBeenCalled();
   });
 });
