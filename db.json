@@ -1,10 +1,16 @@
 {
   "users": [
     {
-      "name": "Messi",
-      "email": "messi10@gmail.com",
+      "name": "Lucas Pereira",
+      "email": "danielmendess.dev@gmail.com",
       "status": "ACTIVE",
-      "id": "06a0"
+      "id": "037d"
+    },
+    {
+      "name": "Dashgo",
+      "email": "danielmendess.dev@gmail.com",
+      "status": "ACTIVE",
+      "id": "68c0"
     }
   ]
 }

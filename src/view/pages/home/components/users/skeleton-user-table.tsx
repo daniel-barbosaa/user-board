@@ -17,7 +17,7 @@ export function SkeletonUserTable({
         <TableRow key={rowIndex}>
           {Array.from({ length: columns }).map((_, colIndex) => (
             <TableCell key={colIndex}>
-              <Skeleton variant="rectangular" height={15} />
+              <Skeleton variant="text" />
             </TableCell>
           ))}
         </TableRow>

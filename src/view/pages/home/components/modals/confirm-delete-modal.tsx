@@ -22,7 +22,7 @@ export function ConfirmDeleteModal({
   onConfirm,
 }: ConfirmDeleteModalProps) {
   return (
-    <Dialog open onClose={onClose} maxWidth="lg">
+    <Dialog open onClose={onClose} maxWidth="xs" fullWidth>
       <DialogTitle sx={{ position: 'relative', textAlign: 'center' }}>
         Excluir
         <IconButton
@@ -40,7 +40,7 @@ export function ConfirmDeleteModal({
       <DialogContent>
         <Box
           sx={{
-            backgroundColor: '#f8d7da7a',
+            bgcolor: '#f8d7da7a',
             width: 50,
             height: 50,
             borderRadius: '50%',

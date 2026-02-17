@@ -7,7 +7,7 @@ import {
   ThemeModeContext,
   ThemeModeContextProvider,
 } from './app/contexts/theme-context';
-import { UnexpectedError } from './view/pages/components/unexpected-error';
+import { UnexpectedError } from './view/components/unexpected-error';
 import Home from './view/pages/home';
 import { UserManagementContextProvider } from './view/pages/home/users-context';
 const queryClient = new QueryClient();

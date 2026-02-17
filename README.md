@@ -97,3 +97,20 @@ yarn test
 A estrutura do projeto foi pensada para separar claramente
 a lógica de negócio da camada de apresentação, facilitando
 a manutenção, escalabilidade e reutilização de código.
+
+```txt
+src/
+├─ app/
+│  ├─ constants/   # Constantes globais
+│  ├─ contexts/    # Contextos
+│  ├─ hooks/       # Hooks customizados
+│  ├─ services/    # Integração com API
+│  ├─ types/       # Tipagens globais
+│  └─ utils/       # Utilitários reutilizáveis
+│
+├─ assets/         # Imagens, ícones e arquivos estáticos
+└─ view/
+   ├─ components/  # Componentes reutilizáveis da UI
+   └─ pages/       # Página da aplicação
+
+```
